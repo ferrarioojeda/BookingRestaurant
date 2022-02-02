@@ -17,10 +17,10 @@ public class CancelReservationServiceImpl implements CancelReservationService {
 	private ReservationRepository reservationRepository;
 
 	public String deleteReservation(String locator) throws BookingException {
-		reservationRepository.findByLocation(locator)
+		reservationRepository.findByLocator(locator)
 				.orElseThrow(() -> new NotFoundException("LOCATOR_NOYfOUND", "LOCATOR_NOT_FOUND"));
 		try {
-			reservationRepository.deleteByLocation(locator);
+			reservationRepository.deleteByLocator(locator);
 		} catch (Exception e) {
 			LOGGER.error("INTERNAL_SERVER_ERROR", e);
 			throw new InternalServerException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
