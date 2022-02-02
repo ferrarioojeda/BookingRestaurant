@@ -17,15 +17,21 @@ import com.boot.bookingrestaurantapi.jsons.RestaurantRest;
 import com.boot.bookingrestaurantapi.response.BookingResponse;
 import com.boot.bookingrestaurantapi.services.RestaurantService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/booking-restaurant")
-
+@Api(value = "/booking-restaurant", produces = "application/json")
 public class RestaurantController {
 
 	@Autowired
 	@Qualifier("restaurantServiceImpl")
 	RestaurantService restaurantService;
-
+	
+	
+	@ApiOperation(value = "Retorna el restaurat por id")
+	
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "restaurant" + "/{" + "restaurantId"
 			+ "}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
