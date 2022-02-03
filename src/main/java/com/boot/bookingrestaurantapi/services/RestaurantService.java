@@ -3,10 +3,11 @@ package com.boot.bookingrestaurantapi.services;
 import java.util.List;
 
 import com.boot.bookingrestaurantapi.Exceptions.BookingException;
+import com.boot.bookingrestaurantapi.entities.Restaurant;
 import com.boot.bookingrestaurantapi.jsons.RestaurantRest;
 
 public interface RestaurantService {
-	RestaurantRest getRestaurantById(Long restaurantId) throws BookingException;
+	Restaurant getRestaurantById(Long restaurantId) throws BookingException;
 	
-	public List<RestaurantRest> getRestaurants() throws BookingException;
+	public List<Restaurant> getRestaurants() throws BookingException;
 }

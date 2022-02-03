@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.boot.bookingrestaurantapi.Exceptions.BookingException;
+import com.boot.bookingrestaurantapi.entities.Restaurant;
 import com.boot.bookingrestaurantapi.jsons.RestaurantRest;
 import com.boot.bookingrestaurantapi.response.BookingResponse;
 import com.boot.bookingrestaurantapi.services.RestaurantService;
@@ -28,24 +29,22 @@ public class RestaurantController {
 	@Autowired
 	@Qualifier("restaurantServiceImpl")
 	RestaurantService restaurantService;
-	
-	
+
 	@ApiOperation(value = "Retorna el restaurat por id")
-	
+
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "restaurant" + "/{" + "restaurantId"
 			+ "}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 
-	public BookingResponse<RestaurantRest> getRestaurantById(@PathVariable Long restaurantId) throws BookingException {
-		return new BookingResponse<>("Succes", String.valueOf(HttpStatus.OK), "Ok",
-				restaurantService.getRestaurantById(restaurantId));
+	public Restaurant getRestaurantById(@PathVariable Long restaurantId) throws BookingException {
+		return restaurantService.getRestaurantById(restaurantId);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "restaurants", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public BookingResponse<List<RestaurantRest>> getRestaurants()throws BookingException {
-		return new BookingResponse<>("Succes", String.valueOf(HttpStatus.OK), "OK", restaurantService.getRestaurants());
+	@RequestMapping(value = "/restaurants", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Restaurant> getRestaurants() throws BookingException {
+		
+		return restaurantService.getRestaurants();
 	}
 
 }
-

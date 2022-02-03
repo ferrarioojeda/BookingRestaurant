@@ -9,21 +9,21 @@ public class BookingResponse<T> implements Serializable {
 
 	private String status;
 	private String code;
-	private String messaje;
+	private String message;
 	private T data;
 	
-	public BookingResponse(String status, String code, String messaje) {
+	public BookingResponse(String status, String code, String message) {
 		
 		this.status = status;
 		this.code = code;
-		this.messaje = messaje;
+		this.message = message;
 		
 	}
-	public BookingResponse(String status, String code, String messaje, T data) {
+	public BookingResponse(String status, String code, String message, T data) {
 		
 		this.status = status;
 		this.code = code;
-		this.messaje = messaje;
+		this.message = message;
 		this.data = data;
 	}
 	public String getStatus() {
@@ -38,11 +38,11 @@ public class BookingResponse<T> implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getMessaje() {
-		return messaje;
+	public String getMessage() {
+		return message;
 	}
-	public void setMessaje(String messaje) {
-		this.messaje = messaje;
+	public void setMessage(String messaje) {
+		this.message = messaje;
 	}
 	public T getData() {
 		return data;

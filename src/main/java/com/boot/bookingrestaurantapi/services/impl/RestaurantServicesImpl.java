@@ -19,29 +19,23 @@ public class RestaurantServicesImpl implements RestaurantService {
 
 	@Autowired
 
-	RestaurantRepository restauranReposiroty;
+	RestaurantRepository restauranRepository;
 
 	public static final ModelMapper modelMapper = new ModelMapper();
 
-	public RestaurantRest getRestaurantById(Long restaurantId) throws BookingException {
-		return modelMapper.map(getRestaurantEntity(restaurantId), RestaurantRest.class);
+	public Restaurant getRestaurantById(Long restaurantId) throws BookingException {
+		return restauranRepository.findById(restaurantId).get();
 	}
 
-	public List<RestaurantRest> GetRestaurants() throws BookingException {
-		final List<Restaurant> RestaurantsEntity = restauranReposiroty.findAll();
-
-		return RestaurantsEntity.stream().map(Service -> modelMapper.map(Service, RestaurantRest.class))
-				.collect(Collectors.toList());
-	}
-
-	private Restaurant getRestaurantEntity(Long restaurantId) throws BookingException {
-		return restauranReposiroty.findById(restaurantId)
-				.orElseThrow(() -> new NotFoundException("Snot-404-1", "RESTAURANT NOT FOUND"));
-	}
+	
 
 	@Override
-	public List<RestaurantRest> getRestaurants() throws BookingException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Restaurant> getRestaurants() throws BookingException {
+		System.out.println("hola mundo");
+		return restauranRepository.findAll();
+		
+		//return RestaurantsEntity.stream().map(Service -> modelMapper.map(Service, RestaurantRest.class))
+			//	.collect(Collectors.toList());
+		
 	}
 }

@@ -13,9 +13,11 @@ import com.boot.bookingrestaurantapi.entities.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long>{
 	
-	Optional<Restaurant> findById(Long id);
-	Optional<Restaurant> findByName(String nameRestaurant);
+	//Optional<Restaurant> findById(Long id);
+	//Optional<Restaurant> findByName(String nameRestaurant);
+//	
+//	@Query("SELECT REST FROM Restaurant REST")
+//	public List<Restaurant> findRestaurants();
 	
-	@Query("SELECT REST FROM Restaurant REST")
-	public List<Restaurant> findRestaurants();
+	
 }
